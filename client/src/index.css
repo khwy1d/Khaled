@@ -1,0 +1,257 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   ACCENT COLOR
+   --------------------------------------------------------------------------
+   This is the one accent color used across the entire site (links, the
+   hero frame, buttons, highlighted numbers, etc). Change ONLY the value
+   below and the whole site updates — nothing else needs to change.
+
+   Current choice: a muted, dark rose. Quiet enough for a professional
+   portfolio, warm enough to feel personal.
+
+   Alternative shades, if you ever want a change:
+     #B5525D   deeper and more serious
+     #D4748A   lighter and warmer
+     #C06070   a middle ground between the two above
+     #A0526A   leaning slightly purple
+     #E8748A   brighter, more youthful
+   ========================================================================== */
+:root {
+  --accent: #c9637a;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Warm off-white paper, not a cold blue-white */
+  --background: #f9f7f4;
+  --foreground: #1a1819;
+
+  --card: #ffffff;
+  --card-foreground: #1a1819;
+  --popover: #ffffff;
+  --popover-foreground: #1a1819;
+
+  --primary: var(--accent);
+  --primary-foreground: #ffffff;
+  --sidebar-primary: var(--accent);
+  --sidebar-primary-foreground: #ffffff;
+
+  --secondary: #efebe7;
+  --secondary-foreground: #4a4748;
+
+  --muted: #efebe7;
+  --muted-foreground: #6b6768;
+
+  --accent-foreground: #ffffff;
+
+  --destructive: #c0463f;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(20, 18, 19, 0.1);
+  --input: rgba(20, 18, 19, 0.12);
+  --ring: var(--accent);
+
+  --chart-1: var(--accent);
+  --chart-2: #8a8580;
+  --chart-3: #c9637a;
+  --chart-4: #4a4748;
+  --chart-5: #d9d4cf;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1819;
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(20, 18, 19, 0.1);
+  --sidebar-ring: var(--accent);
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+.dark {
+  /* Warm near-black, not a cold navy/blue-black */
+  --background: #0c0c0e;
+  --foreground: #f2efec;
+
+  --card: #151417;
+  --card-foreground: #f2efec;
+  --popover: #151417;
+  --popover-foreground: #f2efec;
+
+  --primary: var(--accent);
+  --primary-foreground: #ffffff;
+  --sidebar-primary: var(--accent);
+  --sidebar-primary-foreground: #ffffff;
+
+  --secondary: #1c1b1e;
+  --secondary-foreground: #c7c3c5;
+
+  --muted: #1c1b1e;
+  --muted-foreground: #989497;
+
+  --accent-foreground: #ffffff;
+
+  --destructive: #e0635c;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(255, 255, 255, 0.09);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: var(--accent);
+
+  --chart-1: var(--accent);
+  --chart-2: #8a8580;
+  --chart-3: #c9637a;
+  --chart-4: #c7c3c5;
+  --chart-5: #2a292c;
+
+  --sidebar: #151417;
+  --sidebar-foreground: #f2efec;
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.09);
+  --sidebar-ring: var(--accent);
+}
+
+/* Arabic gets its own type pairing — same roles, different voice */
+html[lang="ar"] {
+  --font-display: "Noto Kufi Arabic", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans Arabic", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  /* Respect reduced-motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      max-width: 1240px;
+    }
+  }
+
+  /* Thin underline link used throughout instead of filled pill buttons */
+  .link-underline {
+    position: relative;
+    text-decoration: none;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  html[dir="rtl"] .link-underline::after {
+    transform-origin: left;
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+  }
+}
